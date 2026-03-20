@@ -58,7 +58,7 @@ colorscheme molokai_albert
 
 set colorcolumn=120
 
-# autochange to dir when opening a file
+" autochange to dir when opening a file
 set autochdir
 
 "CLIPBOARD (must be compiled with clipboard support)
