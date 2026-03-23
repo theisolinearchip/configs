@@ -141,21 +141,31 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " AUTOCOMPLETE STUFF
 " ------------------
 
+" AUTOCOMPLETE STUFF
+" ------------------
+
 set autocomplete
 set complete=.^5,w^5,b^5,u^5
-set completeopt=popup
+set completeopt=popup,noinsert,noselect
 
-" Enable Omnicomplete features
-" set completeopt=longest,menuone
-set omnifunc=syntaxcomplete#Complete
+" triggers a custom function when displaying the popup to autoselect the first
+" option (uses a guard to prevent loop)
+let s:completing = 0
 
-"function! OpenCompletion()
-"    if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
-"        call feedkeys("\<C-x>\<C-o>", "n")
-"    endif
-"endfunction
-"
-"autocmd InsertCharPre * call OpenCompletion()
+autocmd CompleteChanged * call s:AutoSelectFirst()
+autocmd CompleteDone   * let s:completing = 0
+
+function! s:AutoSelectFirst() abort
+  if !pumvisible()
+\ || s:completing
+\ || complete_info(['selected']).selected != -1
+\ || complete_info(['selected']).selected == 0
+ return
+  endif
+
+  let s:completing = 1
+  call feedkeys("\<Down>", 'n')
+endfunction
 
 " SESSION
 " -------
