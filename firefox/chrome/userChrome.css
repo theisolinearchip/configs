@@ -66,7 +66,7 @@ toolbox {
 
 /* tab separators */
 .tabbrowser-tab {
-    border-right: 3px solid #5f5f5f !important;
+    /*! border-right: 1px solid #474747 !important; */
 }
 
 /* tab background NOT selected */
@@ -91,3 +91,4 @@ toolbox {
 .tabbrowser-tab:not([selected=true]):not([multiselected=true]):hover .tab-background {
     background: #800 !important;
 }
+
