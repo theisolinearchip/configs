@@ -71,13 +71,14 @@ toolbox {
 
 /* tab background NOT selected */
 .tabbrowser-tab:not([selected]):not([multiselected]) .tab-background {
-    border-right: 3px solid #cb0000 !important;
+    background: #000000 !important;
+    background-image: none !important;
 }
 
 /* tab background selected */
 .tabbrowser-tab[selected] .tab-background,
 .tabbrowser-tab[multiselected] .tab-background {
-    background-color: #6d0d0d !important;
+    background: #6d0d0d !important;
     background-image: none !important;
 }
 
@@ -88,5 +89,5 @@ toolbox {
 
 /* tab background while HOVER */
 .tabbrowser-tab:not([selected=true]):not([multiselected=true]):hover .tab-background {
-    background-color: #a90000 !important;
+    background: #800 !important;
 }
